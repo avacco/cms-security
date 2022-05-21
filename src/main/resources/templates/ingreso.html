@@ -1,0 +1,44 @@
+
+<!doctype html>
+<html lang="es">
+  <head data-th-replace="parts/head :: cabecera(~{::title}, _)">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>Ingresar</title>
+  </head>
+  <body class="text-center bg-light">
+  	<div class="row">
+		<div class="container my-3 p-3 bg-body rounded shadow-sm col-lg-4 col-md-5 col-sm-7 col-8">
+			<main class="form-signin w-100 m-auto">
+			  <form method="POST" data-th-action="@{/ingreso}">
+			    <img class="mb-4" data-th-src="@{/img/lock.png}" alt="lock" width="120" height="130">
+			    <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
+				<div data-th-if="${param.error}" class="alert alert-danger">
+					Usuario y/o contraseña invalido(s).
+				</div>
+				<div class="form-floating mb-3">
+					<input type="text" class="form-control" id="floatingInput" name="username">
+					<label for="floatingInput">Usuario</label>
+				</div>
+				<div class="form-floating">
+					<input type="password" class="form-control" id="floatingPassword" name="password">
+					<label for="floatingPassword">Contraseña</label>
+				</div>
+			
+			    <div class="checkbox mb-3">
+			      <label>
+			        <input type="checkbox" value="remember-me"> Recuerdame
+			      </label>
+			    </div>
+			    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+			    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+			  </form>
+			</main>
+		</div>
+	</div>
+	<div data-th-replace="parts/scripts :: scripts"></div>
+  </body>
+</html>

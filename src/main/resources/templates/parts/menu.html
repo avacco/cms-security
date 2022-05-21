@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" data-th-fragment="menu" >
+  <div class="container-fluid">
+    <a class="navbar-brand" data-th-href="@{/}">Bienvenido <span data-sec-authorize="isAuthenticated()" data-sec-authentication="name"></span> <span data-sec-authorize="!isAuthenticated()">invitado</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" data-th-href="@{/}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-th-href="@{/nosotros}">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-th-href="@{/contacto}">Contacto</a>
+        </li>
+        <li class="nav-item dropdown"  data-sec-authorize="hasAuthority('ADMIN')">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administracion
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" data-th-href="@{/admin/index}">Indice</a></li>
+            <li><a class="dropdown-item" data-th-href="@{/admin/reporte}">Reporte</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-sec-authorize="!isAuthenticated()" data-th-href="@{/ingreso}">Ingresar</a>
+          <a class="nav-link" data-sec-authorize="isAuthenticated()" data-th-href="@{/logout}">Salir</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <span class="form-control me-2" data-sec-authorize="isAuthenticated()" data-sec-authentication="principal.authorities" />
+      </form>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
